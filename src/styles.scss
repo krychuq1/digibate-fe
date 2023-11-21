@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+$my-typography: mat.define-typography-config(
+ $font-family: 'Inter'
+);
+
+@include mat.typography-hierarchy($my-typography);
+
+@import "assets/styles/dialogs";
+
+
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; background: #e3e2ff;}
+

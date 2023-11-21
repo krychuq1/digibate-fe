@@ -1,0 +1,16 @@
+.header{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 20px auto 0 auto;
+  border-radius: 20px;
+  background: white;
+  align-items: center;
+  .logo{
+    img{
+      max-width: 120px;
+    }
+  }
+
+}

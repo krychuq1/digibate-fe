@@ -1,0 +1,9 @@
+<div class="header mat-elevation-z2">
+  <div class="logo">
+    <img src="assets/logo/logo-text.png" alt="logo">
+  </div>
+  <div class="action" *ngIf="!userService.user">
+    <button mat-raised-button color="primary" (click)="start()">Start free trial</button>
+  </div>
+  <app-user-info *ngIf="userService.user"></app-user-info>
+</div>
