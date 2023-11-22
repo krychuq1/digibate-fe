@@ -9,5 +9,7 @@ import {UserService} from "../../../services/user.service";
 export class UserInfoComponent {
   constructor(public userService: UserService) {
   }
-
+  logout() {
+    this.userService.logout();
+  }
 }

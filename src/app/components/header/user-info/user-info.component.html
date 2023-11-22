@@ -1,1 +1,5 @@
-<p>Hello, {{userService.user?.firstName}}</p>
+<div class="user-info">
+  <p [routerLink]="'/my-account'">Hello, {{userService.user?.profile?.name}}</p>
+  <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout" class="logout" (click)="logout()"></mat-icon>
+</div>
+

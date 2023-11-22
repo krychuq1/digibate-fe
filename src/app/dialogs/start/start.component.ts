@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ContinueEmailComponent} from "../continue-email/continue-email.component";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
+import {UserService} from "../../services/user.service";
+import {IUser} from "../../interfaces/IUser";
 
 @Component({
   selector: 'app-start',
@@ -11,7 +13,7 @@ import {SocialAuthService} from "@abacritt/angularx-social-login";
 export class StartComponent implements OnInit{
   constructor(public dialogRef: MatDialogRef<StartComponent>,
               public dialog: MatDialog,
-              private authService: SocialAuthService) {
+              private userService: UserService) {
   }
 
   continue() {
@@ -24,8 +26,8 @@ export class StartComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.authService.authState.subscribe((user) => {
+    this.userService.userSubject.subscribe({next: (u: IUser) => {
       this.close();
-    });
+      }})
   }
 }
