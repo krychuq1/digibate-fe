@@ -1,0 +1,42 @@
+<div class="dialog">
+  <div class="header" *ngIf="!loading">
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+    <div class="section1">
+      <h1>
+        🚀 Ready to Expand Your Network? 🌐
+      </h1>
+    </div>
+  </div >
+  <div class="inner" *ngIf="!loading" >
+    <p>
+      Hello, go-getter! You're about to add a new company. Let's simplify the process. 🙌
+    </p>
+    <p>
+      Just enter the company's website URL here, and let our AI do the heavy lifting. It's quick, efficient, and hassle-free. ✨
+    </p>
+    <form [formGroup]="urlForm">
+    <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Add Company website</mat-label>
+          <input matInput placeholder="company website" formControlName="url">
+        </mat-form-field>
+        <mat-error *ngIf="urlForm.get('name')?.hasError('required')" class="input-error">
+          password
+        </mat-error>
+        <button mat-raised-button color="primary" (click)="addCompany()">🔗 Add Company</button>
+    </div>
+    </form>
+
+
+
+
+  </div>
+  <div class="header" *ngIf="loading">
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+  </div>
+  <div class="loading" *ngIf="loading">
+    <h1>🔄 Hang Tight, We're on It! 🌟</h1>
+    <p>Your request is spinning into action! We're currently weaving through digital threads to get you what you need.</p>
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

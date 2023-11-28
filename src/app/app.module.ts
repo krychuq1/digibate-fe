@@ -15,6 +15,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { UserInfoComponent } from './components/header/user-info/user-info.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
+import { AddCompanyComponent } from './dialogs/add-company/add-company.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SuccessComponent } from './dialogs/add-company/success/success.component';
 
 @NgModule({
   declarations: [
@@ -22,21 +25,24 @@ import {MatIconModule} from "@angular/material/icon";
     HeaderComponent,
     StartComponent,
     ContinueEmailComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AddCompanyComponent,
+    SuccessComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    GoogleSigninButtonModule,
-    MatButtonModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatIconModule
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        GoogleSigninButtonModule,
+        MatButtonModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatIconModule,
+        MatProgressSpinnerModule
 
-  ],
+    ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
