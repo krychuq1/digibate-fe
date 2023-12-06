@@ -1,0 +1,52 @@
+.dialog{
+  .header{
+    width: 100%;
+    .section1{
+      width: 100%;
+      h1{
+        max-width: 100%;
+      }
+    }
+  }
+  form{
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    .form-inner{
+      display: flex;
+      flex-direction: column;
+    }
+    mat-form-field{
+      margin-bottom: 20px;
+    }
+  }
+  &.loading{
+    h1{
+      //border: 1px solid red;
+      max-width: 100%;
+      text-align: center;
+    }
+    p{
+      text-align: center;
+    }
+    mat-spinner{
+      margin: 0 auto;
+    }
+    button{
+      display: block;
+      margin: 40px auto 0 auto;
+    }
+  }
+}
+
+.inner{
+  display: flex;
+  flex-direction: column;
+  .row{
+    margin-bottom: 20px;
+    p{
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+}

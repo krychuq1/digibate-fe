@@ -7,7 +7,15 @@
   //border-right: 1px solid $font-color;
   height: 100vh;
   background-color: white;
-
+  .company-info{
+    span{
+      font-size: 10px;
+    }
+    p{
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
   .line{
     height: 1px;
     background-color: $font-color;

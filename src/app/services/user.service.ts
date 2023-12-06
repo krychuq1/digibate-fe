@@ -10,9 +10,10 @@ import {Subject} from "rxjs";
   providedIn: 'root'
 })
 export class UserService {
-  user: IUser | null = null;
+  user!: IUser;
   server: string = environment.server;
   userSubject: Subject<IUser> = new Subject();
+  isLogged = false;
   constructor(private authService: SocialAuthService,
               private http: HttpClient, private router: Router) {
 
@@ -24,8 +25,6 @@ export class UserService {
       }).subscribe(
         {
           next: (r: any) => {
-            // store token
-            console.log('here we are ', r.access_token);
             localStorage.setItem('token', r.access_token)
             this.getProfile();
           },
@@ -45,15 +44,16 @@ export class UserService {
     };
     this.http.get(this.server + 'auth/userInfo/', {headers}).subscribe({next: (u: any) => {
       this.user = u;
+      this.isLogged = true;
       this.userSubject.next(u);
       this.router.navigate(['/my-account'])
     }, error: e => {
-      this.user = null;
+        this.isLogged = false;
     }});
   }
   logout() {
     this.router.navigate(['/'])
     localStorage.removeItem('token');
-    this.user = null;
+    this.isLogged = false;
   }
 }

@@ -1,5 +1,5 @@
 <div class="dialog">
-  <div class="header" *ngIf="!loading">
+  <div class="header" *ngIf="!loading && !error">
     <span class="material-symbols-outlined close" (click)="close()">close</span>
     <div class="section1">
       <h1>
@@ -7,7 +7,7 @@
       </h1>
     </div>
   </div >
-  <div class="inner" *ngIf="!loading" >
+  <div class="inner" *ngIf="!loading && !error" >
     <p>
       Hello, go-getter! You're about to add a new company. Let's simplify the process. 🙌
     </p>
@@ -19,11 +19,15 @@
         <mat-form-field appearance="outline">
           <mat-label>Add Company website</mat-label>
           <input matInput placeholder="company website" formControlName="url">
+          <mat-error *ngIf="urlForm.get('url')?.hasError('required')" class="input-error">
+            company website is required
+          </mat-error>
+          <mat-error *ngIf="urlForm.get('url')?.hasError('pattern')" class="input-error">
+            company website has to start with http:// or https://
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="urlForm.get('name')?.hasError('required')" class="input-error">
-          password
-        </mat-error>
-        <button mat-raised-button color="primary" (click)="addCompany()">🔗 Add Company</button>
+
+        <button mat-raised-button color="primary" (click)="addCompany()" [disabled]="urlForm.invalid">🔗 Add Company</button>
     </div>
     </form>
 
@@ -31,12 +35,24 @@
 
 
   </div>
-  <div class="header" *ngIf="loading">
+  <div class="header" *ngIf="loading && !error">
     <span class="material-symbols-outlined close" (click)="close()">close</span>
   </div>
-  <div class="loading" *ngIf="loading">
+  <div class="loading" *ngIf="loading && !error">
     <h1>🔄 Hang Tight, We're on It! 🌟</h1>
     <p>Your request is spinning into action! We're currently weaving through digital threads to get you what you need.</p>
     <mat-spinner></mat-spinner>
+  </div>
+  <div class="error" *ngIf="error">
+    <h1>🛑 Oops, We Hit a Snag!</h1>
+    <p>
+      We're sorry, but our digital explorers couldn't fetch the info this time. Sometimes,
+      even the smartest AI needs a second try or a little human touch. 🤖❌
+    </p>
+    <div class="action">
+      <button mat-raised-button color="primary" (click)="error = false;">🔄 Try Again</button>
+      <p (click)="openSuccess({
+      header: '📝 Your Turn to Shine! Let\'s Fill It Out! ✨'})">✏️ Fill Out Manually</p>
+    </div>
   </div>
 </div>

@@ -27,4 +27,26 @@
       margin: 40px auto 0 auto;
     }
   }
+  .error{
+    h1{
+      max-width: 100%;
+    }
+    p{
+      text-align: center;
+    }
+    .action{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      p{
+        margin: 0 0 0 20px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+  mat-form-field{
+    margin-bottom: 20px;
+  }
 }

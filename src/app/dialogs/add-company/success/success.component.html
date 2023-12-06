@@ -1,13 +1,105 @@
-<div class="dialog">
+<div class="dialog" *ngIf="!loading && !success">
   <div class="header">
     <span class="material-symbols-outlined close"  (click)="close()">close</span>
     <div class="section1">
       <h1>
-        🎉 Success! Here's the Scoop! 🌐
+        {{data.header}}
       </h1>
     </div>
   </div >
-  <div class="inner" >
-    <p>{{data.content}}</p>
+  <div class="form">
+  <form [formGroup]="companyForm">
+    <div *ngIf="!stepTwo" class="form-inner">
+      <mat-form-field appearance="outline">
+        <mat-label>company description</mat-label>
+        <textarea  matInput
+                   rows="5"
+                   placeholder="company description" formControlName="companyDescription"></textarea>
+        <mat-error *ngIf="companyForm.get('companyDescription')?.hasError('required')" class="input-error">
+          company Description is required
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>product description</mat-label>
+        <textarea  matInput
+                   rows="5"
+                   placeholder="product description" formControlName="productDescription"></textarea>
+      </mat-form-field>
+      <mat-error *ngIf="companyForm.get('productDescription')?.hasError('required')" class="input-error">
+        Product Description is required
+      </mat-error>
+    </div>
+
+    <div *ngIf="stepTwo" class="form-inner">
+      <mat-form-field appearance="outline">
+        <mat-label>Full business name</mat-label>
+        <input matInput placeholder="Full business name" formControlName="fullBusinessName">
+        <mat-error *ngIf="companyForm.get('fullBusinessName')?.hasError('required')" class="input-error">
+          Full Business Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>business name</mat-label>
+        <input matInput placeholder="business Name" formControlName="businessName">
+        <mat-error *ngIf="companyForm.get('businessName')?.hasError('required')" class="input-error">
+          Business Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>industry</mat-label>
+        <input matInput placeholder="industry" formControlName="industry">
+        <mat-error *ngIf="companyForm.get('industry')?.hasError('required')" class="input-error">
+          Industry is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>email</mat-label>
+        <input matInput placeholder="email" formControlName="email">
+        <mat-error *ngIf="companyForm.get('email')?.hasError('required')" class="input-error">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>address</mat-label>
+        <input matInput placeholder="address" formControlName="address">
+        <mat-error *ngIf="companyForm.get('address')?.hasError('required')" class="input-error">
+          Address is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+      <button mat-raised-button color="primary" *ngIf="!stepTwo" (click)="stepTwo = true">next</button>
+      <button mat-raised-button color="primary" *ngIf="stepTwo" (click)="addCompany()">Add company</button>
+  </form>
+  </div>
+</div>
+<div class="dialog loading" *ngIf="loading && !success">
+  <div class="header" *ngIf="loading">
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+  </div>
+  <div *ngIf="loading">
+    <h1>🔄 Hang Tight, We're on It! 🌟</h1>
+    <p>Your request is spinning into action! We're currently weaving through digital threads to get you what you need.</p>
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<div class="dialog loading" *ngIf="success  && success">
+  <div class="header" *ngIf="success">
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+  </div>
+  <div *ngIf="success">
+    <h1>🎉 Company Added Successfully!</h1>
+    <p>
+      Congratulations! 🌟 You've successfully added a new company to your portfolio.
+      This is just the beginning of an exciting journey in the world of business
+    </p>
+    <p>
+      Ready to take the next step?
+    </p>
+    <button mat-raised-button color="primary" (click)="close()">🌈 Start Your Journey</button>
   </div>
 </div>

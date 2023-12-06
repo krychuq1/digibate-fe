@@ -1,9 +1,18 @@
 <div class="side-nav mat-elevation-z2">
   <div class="top">
-    <button mat-raised-button color="primary" (click)="addCompany()">Add Your Company</button>
+    <button *ngIf="!userService.user.companies.length" mat-raised-button color="primary" (click)="addCompany()">Add Your Company</button>
+    <div class="company-info">
+      <span>Your company:</span>
+      <p>{{userService.user.companies[0].businessName}}</p>
+    </div>
   </div>
   <div class="line"></div>
   <div class="inner">
+    <div *ngIf="userService.user.companies.length">
+      <div class="row">
+        <button mat-raised-button color="primary">Create content</button>
+      </div>
+    </div>
     <div class="row">
       <span class="material-symbols-outlined">
           home

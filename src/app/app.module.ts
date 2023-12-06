@@ -18,6 +18,8 @@ import {MatIconModule} from "@angular/material/icon";
 import { AddCompanyComponent } from './dialogs/add-company/add-company.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SuccessComponent } from './dialogs/add-company/success/success.component';
+import {TextFieldModule} from "@angular/cdk/text-field";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { SuccessComponent } from './dialogs/add-company/success/success.componen
         BrowserAnimationsModule,
         GoogleSigninButtonModule,
         MatButtonModule,
-        MatInputModule,
+      TextFieldModule,
+      ToastrModule.forRoot(), // ToastrModule added
+      MatInputModule,
         ReactiveFormsModule,
         MatDialogModule,
         MatIconModule,
