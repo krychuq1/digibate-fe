@@ -15,6 +15,7 @@ export class SuccessComponent implements OnInit{
   stepTwo = false;
   loading = false;
   success = false;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               public dialogRef: DialogRef, public companyService: CompanyService,
               private toastr: ToastrService) {
@@ -49,20 +50,27 @@ export class SuccessComponent implements OnInit{
   addCompany() {
     this.loading = true;
     const company: ICompany = {
+      brandIdentity: {
+        name: this.data.response.content.response.businessInformation.businessName,
+        brandAttributes: this.data.response.content.response.brandAttributes,
+        toneOfVoice: this.data.response.content.response.toneOfVoice
+      },
       address: this.companyForm.get('address')?.value || "",
       businessName: this.companyForm.get('businessName')?.value || "",
       companyDescription: this.companyForm.get('companyDescription')?.value || "",
       email: this.companyForm.get('email')?.value || "",
       fullBusinessName: this.companyForm.get('fullBusinessName')?.value || "",
       industry: this.companyForm.get('industry')?.value || "",
-      productDescription: this.companyForm.get('productDescription')?.value || "",
+      productDescription: this.companyForm.get('productDescription')?.value || ""
+
     };
-    // todo add company
     this.companyService.addCompany(company).subscribe({next: (res) => {
          this.success = true;
+        this.companyService.companySubject.next(true);
       }, error: (err) => {
         this.toastr.error('Something went wrong, please try again!')
         this.loading = false;
       }})
   }
+
 }

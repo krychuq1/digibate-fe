@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {IUser} from "../interfaces/IUser";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
+import {CompanyService} from "./company.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class UserService {
   userSubject: Subject<IUser> = new Subject();
   isLogged = false;
   constructor(private authService: SocialAuthService,
+              private companyService: CompanyService,
               private http: HttpClient, private router: Router) {
 
     this.authService.authState.subscribe((user) => {
@@ -32,6 +34,11 @@ export class UserService {
           }
         });
     });
+    this.companyService.companySubject.subscribe((next) => {
+      console.log('here company added');
+      this.getProfile();
+    })
+
     // check if token exists
     if(localStorage.getItem('token')) {
       this.getProfile();
@@ -46,7 +53,7 @@ export class UserService {
       this.user = u;
       this.isLogged = true;
       this.userSubject.next(u);
-      this.router.navigate(['/my-account'])
+      // this.router.navigate(['/my-account'])
     }, error: e => {
         this.isLogged = false;
     }});

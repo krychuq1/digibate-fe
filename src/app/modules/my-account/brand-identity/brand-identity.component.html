@@ -1,0 +1,70 @@
+<div class="inner mat-elevation-z2">
+  <mat-tab-group>
+    <mat-tab label="Name">
+      <div class="holder">
+        <form [formGroup]="formGroup" class="name-form">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Enter name" required>
+            <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Slogan</mat-label>
+            <input matInput formControlName="slogan" placeholder="Enter slogan">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" [disabled]="formGroup.invalid">save</button>
+
+        </form>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Brand attributes">
+      <div class="holder">
+        <div class="attributes-container">
+          <div *ngFor="let attribute of brandAttributes" class="attribute-item"
+               [ngClass]="{'selected': isAttributeSelected(attribute)}"
+               (click)="toggleAttributeSelection(attribute)">
+            <span class="material-symbols-outlined">{{ attribute.icon }}</span>
+            <div class="attribute-name">{{ attribute.adjective }}</div>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="selectedAttributes.length == 0">
+          Confirm Selection
+        </button>
+      </div>
+
+
+    </mat-tab>
+<!--    <mat-tab label="Colors">-->
+<!--      <p>Content for Colors</p>-->
+<!--    </mat-tab>-->
+<!--    <mat-tab label="Logo">-->
+<!--      <p>Content for Logo</p>-->
+<!--    </mat-tab>-->
+<!--    <mat-tab label="Font">-->
+<!--      <p>Content for Font</p>-->
+<!--    </mat-tab>-->
+    <mat-tab label="Tone of Voice">
+      <div class="holder">
+        <form [formGroup]="toneOfVoice" class="name-form">
+
+          <mat-form-field appearance="outline">
+            <mat-label>voice tone</mat-label>
+            <input matInput formControlName="tone" placeholder="Here write your voice tone..." required>
+            <mat-error *ngIf="toneOfVoice.get('tone')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" [disabled]="formGroup.invalid">save</button>
+
+        </form>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

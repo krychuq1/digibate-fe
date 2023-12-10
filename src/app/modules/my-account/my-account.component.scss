@@ -1,5 +1,43 @@
+@import "../../../assets/styles/colors";
 .my-account{
-  //display: flex;
+  display: flex;
+  //border: 1px solid red;
+  .my-account-inner{
+    position: relative;
+    display: flex;
+    flex: 1 0 calc(100% - 340px);
+    //width: 100%;
+    //border: 1px solid blue;
+  }
+  .route-holder{
+    width: 100%;
+  }
+  .inner{
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px 0 20px;
+    background: white;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 20px;
+    height: 100vh;
+    width: 100%;
+    h1{
+      text-align: center;
+      font-weight: bold;
+    }
+    p{
+      text-align: center;
+      color: $primary-color;
+      font-weight: 500;
+      font-size: 14px;
+      span{
+        text-decoration: underline;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
   //justify-content: center;
   //align-items: center;
   //flex-direction: column;

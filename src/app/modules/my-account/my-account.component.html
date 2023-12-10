@@ -1,6 +1,18 @@
 <div class="my-account">
-  <app-side-nav></app-side-nav>
-<!--  <h1>&#x1F4BC; Kickstart Your Business Journey: Add Your Company Here!</h1>-->
-<!--  <button mat-raised-button color="primary">Add Your Company</button>-->
+  <app-side-nav [url]="currentRoute"></app-side-nav>
+  <div *ngIf="!isChildRoute" class="my-account-inner">
+    <div class="inner mat-elevation-z2" *ngIf="!userService.user.companies.length">
+      <h1>&#x1F4BC; Kickstart Your Business Journey: Add Your Company!</h1>
+    </div>
+
+    <div class="inner mat-elevation-z2"  *ngIf="userService.user.companies.length" >
+      <h1>🚀🌟 Congratulations! You're on the Path to Automated Marketing Magic!</h1>
+      <p>Before we conjure up top-notch content for your business, we just need a sprinkle of info about your
+        <span [routerLink]="'brand-identity'">brand's identity</span>. Fill in the details and let the magic begin!</p>
+    </div>
+  </div>
+  <div class="route-holder">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 

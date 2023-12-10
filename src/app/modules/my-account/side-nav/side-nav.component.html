@@ -1,7 +1,7 @@
 <div class="side-nav mat-elevation-z2">
   <div class="top">
     <button *ngIf="!userService.user.companies.length" mat-raised-button color="primary" (click)="addCompany()">Add Your Company</button>
-    <div class="company-info">
+    <div class="company-info" *ngIf="userService.user.companies.length">
       <span>Your company:</span>
       <p>{{userService.user.companies[0].businessName}}</p>
     </div>
@@ -13,11 +13,19 @@
         <button mat-raised-button color="primary">Create content</button>
       </div>
     </div>
-    <div class="row">
+    <div class="row" [class.selected]="url === '/my-account'" routerLink="/my-account">
       <span class="material-symbols-outlined">
           home
       </span>
       <p>Dashboard</p>
+    </div>
+    <div class="row"
+         *ngIf="userService.user.companies.length"
+         [class.selected]="url.includes('brand-identity')" routerLink="/my-account/brand-identity">
+      <span class="material-symbols-outlined">
+          Fingerprint
+      </span>
+      <p>Brand Identity</p>
     </div>
   </div>
 </div>

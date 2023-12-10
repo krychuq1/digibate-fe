@@ -39,8 +39,8 @@
     <span class="material-symbols-outlined close" (click)="close()">close</span>
   </div>
   <div class="loading" *ngIf="loading && !error">
-    <h1>🔄 Hang Tight, We're on It! 🌟</h1>
-    <p>Your request is spinning into action! We're currently weaving through digital threads to get you what you need.</p>
+    <h1>{{ loadingMessage.h1 }}</h1>
+    <p>{{ loadingMessage.p }}</p>
     <mat-spinner></mat-spinner>
   </div>
   <div class="error" *ngIf="error">

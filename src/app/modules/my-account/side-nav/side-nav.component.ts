@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddCompanyComponent} from "../../../dialogs/add-company/add-company.component";
 import {UserService} from "../../../services/user.service";
@@ -10,6 +10,8 @@ import {IUser} from "../../../interfaces/IUser";
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
+  @Input()
+  url: string;
   constructor(public dialog: MatDialog, public userService: UserService) {
 
   }

@@ -1,3 +1,5 @@
+import {BrandIdentity} from "./BrandIdentity";
+
 export interface ICompany {
   companyDescription: string;
   productDescription: string;
@@ -6,4 +8,5 @@ export interface ICompany {
   industry: string;
   email: string;
   address: string;
+  brandIdentity: BrandIdentity;
 }
