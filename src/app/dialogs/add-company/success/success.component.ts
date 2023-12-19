@@ -1,10 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {DialogRef} from "@angular/cdk/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CompanyService} from "../../../services/company.service";
 import {ICompany} from "../../../interfaces/ICompany";
 import { ToastrService } from 'ngx-toastr';
+import {BrandIdentityDialogComponent} from "../brand-identity-dialog/brand-identity-dialog.component";
 
 @Component({
   selector: 'app-success',
@@ -17,6 +18,7 @@ export class SuccessComponent implements OnInit{
   success = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              public dialog: MatDialog,
               public dialogRef: DialogRef, public companyService: CompanyService,
               private toastr: ToastrService) {
 
@@ -49,11 +51,35 @@ export class SuccessComponent implements OnInit{
   }
   addCompany() {
     this.loading = true;
+    // const company: ICompany = {
+    //   brandIdentity: {
+    //     name: this.data.response.content.response.businessInformation.businessName,
+    //     brandAttributes: this.data.response.content.response.brandAttributes,
+    //     toneOfVoice: this.data.response.content.response.toneOfVoice
+    //   },
+    //   address: this.companyForm.get('address')?.value || "",
+    //   businessName: this.companyForm.get('businessName')?.value || "",
+    //   companyDescription: this.companyForm.get('companyDescription')?.value || "",
+    //   email: this.companyForm.get('email')?.value || "",
+    //   fullBusinessName: this.companyForm.get('fullBusinessName')?.value || "",
+    //   industry: this.companyForm.get('industry')?.value || "",
+    //   productDescription: this.companyForm.get('productDescription')?.value || ""
+    // };
+    // this.companyService.addCompany(company).subscribe({next: (res) => {
+    //      this.success = true;
+    //     this.companyService.companySubject.next(true);
+    //   }, error: (err) => {
+    //     this.toastr.error('Something went wrong, please try again!')
+    //     this.loading = false;
+    //   }})
+  }
+  openBrandIdentity() {
     const company: ICompany = {
       brandIdentity: {
         name: this.data.response.content.response.businessInformation.businessName,
         brandAttributes: this.data.response.content.response.brandAttributes,
-        toneOfVoice: this.data.response.content.response.toneOfVoice
+        toneOfVoice: this.data.response.content.response.toneOfVoice,
+        slogan: this.data.response.content.response.slogan
       },
       address: this.companyForm.get('address')?.value || "",
       businessName: this.companyForm.get('businessName')?.value || "",
@@ -62,15 +88,14 @@ export class SuccessComponent implements OnInit{
       fullBusinessName: this.companyForm.get('fullBusinessName')?.value || "",
       industry: this.companyForm.get('industry')?.value || "",
       productDescription: this.companyForm.get('productDescription')?.value || ""
-
     };
-    this.companyService.addCompany(company).subscribe({next: (res) => {
-         this.success = true;
-        this.companyService.companySubject.next(true);
-      }, error: (err) => {
-        this.toastr.error('Something went wrong, please try again!')
-        this.loading = false;
-      }})
-  }
+    this.close();
 
+    this.dialog.open(BrandIdentityDialogComponent, {
+      width: '1000px',
+      height: '700px',
+      data: company,
+      autoFocus: false,
+    });
+  }
 }

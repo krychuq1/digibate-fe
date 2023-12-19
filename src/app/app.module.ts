@@ -20,6 +20,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SuccessComponent } from './dialogs/add-company/success/success.component';
 import {TextFieldModule} from "@angular/cdk/text-field";
 import {ToastrModule} from "ngx-toastr";
+import { BrandIdentityDialogComponent } from './dialogs/add-company/brand-identity-dialog/brand-identity-dialog.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -29,24 +31,26 @@ import {ToastrModule} from "ngx-toastr";
     ContinueEmailComponent,
     UserInfoComponent,
     AddCompanyComponent,
-    SuccessComponent
+    SuccessComponent,
+    BrandIdentityDialogComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        GoogleSigninButtonModule,
-        MatButtonModule,
-      TextFieldModule,
-      ToastrModule.forRoot(), // ToastrModule added
-      MatInputModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatIconModule,
-        MatProgressSpinnerModule
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    GoogleSigninButtonModule,
+    MatButtonModule,
+    TextFieldModule,
+    ToastrModule.forRoot(), // ToastrModule added
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatStepperModule
 
-    ],
+  ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',

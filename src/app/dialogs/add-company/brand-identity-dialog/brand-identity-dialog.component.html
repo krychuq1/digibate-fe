@@ -1,0 +1,97 @@
+<div class="dialog" *ngIf="!loading && !success">
+  <div class="header">
+
+    <span class="material-symbols-outlined close">close</span>
+    <div class="section1">
+      <h1>
+        Check & Confirm Your Unique Brand Identity Now! 👁️✨"
+      </h1>
+    </div>
+        <div class="section2">
+          <mat-stepper [linear]="true" #stepper>
+            <mat-step [stepControl]="formNameSlogan">
+              <form [formGroup]="formNameSlogan">
+                <ng-template matStepLabel>name & slogan</ng-template>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Enter name" required>
+                  <mat-error *ngIf="formNameSlogan.get('name')?.hasError('required')">
+                    Name is required
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Slogan</mat-label>
+                  <input matInput formControlName="slogan" placeholder="Enter slogan">
+                </mat-form-field>
+                <div>
+                  <button mat-raised-button color="primary" matStepperNext [disabled]="formNameSlogan.invalid">Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step  label="Brand attributes">
+              <p class="brand-p">Here is what our AI picked up for you: </p>
+              <div class="attributes-container" *ngIf="selectedAttributes">
+                <div *ngFor="let attribute of selectedAttributes" class="attribute-item">
+                  <span class="material-symbols-outlined">{{ attribute.icon }}</span>
+                  <div class="attribute-name">{{ attribute.adjective }}</div>
+                </div>
+              </div>
+              <p class="brand-p">You can choose something else: </p>
+              <div class="attributes-container all">
+                <div *ngFor="let attribute of brandAttributes" class="attribute-item"
+                     [ngClass]="{'selected': isAttributeSelected(attribute)}"
+                     (click)="toggleAttributeSelection(attribute)">
+                  <span class="material-symbols-outlined">{{ attribute.icon }}</span>
+                  <div class="attribute-name">{{ attribute.adjective }}</div>
+                </div>
+              </div>
+              <button mat-raised-button color="primary" matStepperNext [disabled]="formNameSlogan.invalid">Next</button>
+            </mat-step>
+            <mat-step [stepControl]="toneOfVoice">
+              <ng-template matStepLabel>Tone of voice</ng-template>
+              <form [formGroup]="toneOfVoice" class="name-form">
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Voice Tone</mat-label>
+                  <textarea matInput formControlName="tone" placeholder="Here write your voice tone..." required rows="4"></textarea>
+                  <mat-error *ngIf="toneOfVoice.get('tone')?.hasError('required')">
+                    Voice tone is required
+                  </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" [disabled]="toneOfVoice.invalid" (click)="save()">save</button>
+              </form>
+            </mat-step>
+          </mat-stepper>
+
+        </div>
+  </div>
+</div>
+
+<div class="dialog loading" *ngIf="loading && !success">
+  <div class="header" *ngIf="loading">
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+  </div>
+  <div *ngIf="loading">
+    <h1>🔄 Hang Tight, We're on It! 🌟</h1>
+    <p>Your request is spinning into action! We're currently weaving through digital threads to get you what you need.</p>
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<div class="dialog loading" *ngIf="success">
+  <div class="header" *ngIf="success">
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+  </div>
+  <div *ngIf="success">
+    <h1>🎉 Company Added Successfully!</h1>
+    <p>
+      Congratulations! 🌟 You've successfully added a new company to your portfolio.
+      This is just the beginning of an exciting journey in the world of business
+    </p>
+    <p>
+      Ready to take the next step?
+    </p>
+    <button mat-raised-button color="primary" (click)="close()">🌈 Start Your Journey</button>
+  </div>
+</div>

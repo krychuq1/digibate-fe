@@ -1,0 +1,67 @@
+@import "../../../../assets/styles/dialogs.scss";
+.dialog{
+  .header{
+    width: 100%;
+    h1{
+      max-width: 100%;
+    }
+  }
+  .section2{
+    form{
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    button{
+      display: block;
+      margin: 0 auto;
+    }
+    .brand-p{
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .attributes-container{
+      &.all{
+        max-height: 300px;
+        overflow-y: scroll;
+      }
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      justify-content: center;
+      .attribute-item{
+        cursor: pointer;
+        padding: 10px;
+        min-width: 120px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        &.selected{
+          border-color: $primary-color;
+          background-color: rgba($primary-color, 0.1); // 50% opacity
+
+        }
+      }
+
+    }
+  }
+  &.loading{
+    h1{
+      //border: 1px solid red;
+      max-width: 100%;
+      text-align: center;
+    }
+    p{
+      text-align: center;
+    }
+    mat-spinner{
+      margin: 0 auto;
+    }
+    button{
+      display: block;
+      margin: 40px auto 0 auto;
+    }
+  }
+}
+

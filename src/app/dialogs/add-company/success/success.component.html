@@ -72,12 +72,13 @@
         </mat-error>
       </mat-form-field>
     </div>
-      <button mat-raised-button color="primary" *ngIf="!stepTwo" (click)="stepTwo = true"
+
+      <button mat-raised-button color="primary" type="button" *ngIf="!stepTwo" (click)="stepTwo = true"
               [disabled]="companyForm.get('companyDescription')?.hasError('required')
               || companyForm.get('productDescription')?.hasError('required')">next</button>
 
 
-      <button mat-raised-button color="primary" *ngIf="stepTwo" (click)="addCompany()" [disabled]="companyForm.invalid" >Add company</button>
+      <button mat-raised-button color="primary" *ngIf="stepTwo" (click)="openBrandIdentity()" [disabled]="companyForm.invalid" >next</button>
   </form>
   </div>
 </div>
