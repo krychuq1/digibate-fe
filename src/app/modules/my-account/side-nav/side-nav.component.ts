@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddCompanyComponent} from "../../../dialogs/add-company/add-company.component";
 import {UserService} from "../../../services/user.service";
 import {IUser} from "../../../interfaces/IUser";
+import {ContentService} from "../../../services/content.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-side-nav',
@@ -12,7 +14,12 @@ import {IUser} from "../../../interfaces/IUser";
 export class SideNavComponent implements OnInit {
   @Input()
   url: string;
-  constructor(public dialog: MatDialog, public userService: UserService) {
+  @Output() loadingEmitter = new EventEmitter<boolean>();
+
+  constructor(public dialog: MatDialog,
+              public contentService: ContentService,
+              public userService: UserService,
+              private toastr: ToastrService) {
 
   }
   addCompany() {
@@ -21,7 +28,16 @@ export class SideNavComponent implements OnInit {
       disableClose: true
     });
   }
-
+  createContent() {
+    this.loadingEmitter.emit(true);
+    this.contentService.createContent().subscribe({next: (response) => {
+      this.toastr.success('Content mailed successfully');
+      this.loadingEmitter.emit(false);
+      }, error: (error) => {
+        this.loadingEmitter.emit(false);
+        this.toastr.error('Something went wrong');
+    }});
+  }
   ngOnInit(): void {
     // this.addCompany();
   }

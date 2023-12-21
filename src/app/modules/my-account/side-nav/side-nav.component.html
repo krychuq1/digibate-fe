@@ -10,7 +10,7 @@
   <div class="inner">
     <div *ngIf="userService.user.companies.length">
       <div class="row">
-        <button mat-raised-button color="primary">Create content</button>
+        <button mat-raised-button color="primary" (click)="createContent()">Create content</button>
       </div>
     </div>
     <div class="row" [class.selected]="url === '/my-account'" routerLink="/my-account">

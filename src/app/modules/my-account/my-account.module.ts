@@ -8,6 +8,7 @@ import { BrandIdentityComponent } from './brand-identity/brand-identity.componen
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatTabsModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class MyAccountModule { }

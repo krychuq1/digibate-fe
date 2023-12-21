@@ -1,11 +1,16 @@
 <div class="my-account">
-  <app-side-nav [url]="currentRoute"></app-side-nav>
+<!--  -->
+  <app-side-nav [url]="currentRoute" (loadingEmitter)="this.loading = $event"></app-side-nav>
+
   <div *ngIf="!isChildRoute" class="my-account-inner">
-    <div class="inner mat-elevation-z2" *ngIf="!userService.user.companies.length">
+    <div class="inner mat-elevation-z2" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="inner mat-elevation-z2" *ngIf="!userService.user.companies.length && !loading">
       <h1>&#x1F4BC; Kickstart Your Business Journey: Add Your Company!</h1>
     </div>
 
-    <div class="inner mat-elevation-z2"  *ngIf="userService.user.companies.length" >
+    <div class="inner mat-elevation-z2"  *ngIf="userService.user.companies.length && !loading" >
       <h1>🚀🌟 Congratulations, you have now finished setting up your account</h1>
       <p>Please allow up to
         <span>24 hours</span> before receiving

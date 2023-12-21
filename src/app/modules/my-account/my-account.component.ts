@@ -11,6 +11,7 @@ import {filter} from "rxjs";
 export class MyAccountComponent implements OnInit {
   isChildRoute = false;
   currentRoute: string;
+  loading = false;
   constructor(public userService: UserService,
               private router: Router) {
   }
