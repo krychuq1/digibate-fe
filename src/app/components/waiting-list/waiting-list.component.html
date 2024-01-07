@@ -1,1 +1,30 @@
-<p>waiting-list works!</p>
+<div class="waiting-list">
+  <div class="holder" *ngIf="!success">
+    <img src="assets/logo/logo-text.png">
+    <h1>Launching soon! 🚀</h1>
+    <h1>Want to become a tester?</h1>
+    <p>Sign up to become an early tester of the Digibate platform and get access to free marketing content.<br>
+      Please type in your email and we will reach out to you and give you exclusive access as the first to try out our cool features once the platform is ready</p>
+    <div class="form-holder">
+      <form [formGroup]="emailForm" (submit)="onSubmit()">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Enter your email" type="email" email>
+          <mat-error *ngIf="emailForm.get('email')?.invalid">{{ getEmailErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <button class="primary-btn" type="submit" [disabled]="!emailForm.valid">Sign Up</button>
+      </form>
+    </div>
+  </div>
+  <div class="success" *ngIf="success">
+    <h1>Thank You for Your Interest!</h1>
+    <p>Your request to become a tester for the Digibate platform has been successfully registered. We're excited about the interest you've shown in our upcoming features.</p>
+    <p>We are working hard to get everything ready and will notify you as soon as the platform is available for testing. Your early feedback will be invaluable in shaping the future of our app.</p>
+  </div>
+
+
+
+
+
+</div>
+

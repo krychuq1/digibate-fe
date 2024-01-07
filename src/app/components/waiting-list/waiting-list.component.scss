@@ -1,0 +1,77 @@
+@import "../../../assets/styles/buttons";
+
+
+.waiting-list{
+  background: url('../../../assets/first-section/bg-section1.png') no-repeat center center;
+  min-height: 1100px;
+  background-size: cover;
+  padding-top: 0px;
+  .success{
+    padding-top: 80px;
+  }
+  img{
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 200px;
+  }
+  .form-holder{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    .input-field{
+      width: 300px;
+    }
+  }
+  .primary-btn{
+    @include primary-button(185px, 56px, 29px, 16px, 600, 27px, white, 0);
+    margin: 10px auto 0 auto;
+  }
+  input{
+    display: block;
+    margin: 0 auto;
+  }
+  p{
+    margin: 20px auto 0 auto;
+    //width: 600px;
+    padding: 0 30px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 19px;
+  }
+  h1{
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 37px;
+    text-transform: capitalize;
+    color: rgba(29, 20, 55, 1);
+    span{
+      color: rgb(165 115 203);
+
+    }
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .waiting-list{
+    padding-top: 20px;
+    img{
+      display: block;
+      margin: 0 auto 80px auto;
+      width: 200px;
+    }
+    h1{
+      font-size: 68px;
+      line-height: 87px;
+
+    }
+    p{
+      margin: 20px auto 0 auto;
+      width: 600px;
+      padding: 0 30px;
+      text-align: center;
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+}
