@@ -1,31 +1,56 @@
-<div class="side-nav mat-elevation-z2">
-  <div class="top">
-    <button *ngIf="!userService.user.companies.length" mat-raised-button color="primary" (click)="addCompany()">Add Your Company</button>
-    <div class="company-info" *ngIf="userService.user.companies.length">
-      <span>Your company:</span>
-      <p>{{userService.user.companies[0].businessName}}</p>
-    </div>
-  </div>
-  <div class="line"></div>
+<div class="side-nav mat-elevation-z2" (mouseleave)="hideNav()">
+  <app-create-nav  *ngIf="showNav"></app-create-nav>
   <div class="inner">
+    <div class="row" routerLink="/">
+      <img src="assets/logo/logo-text.png" class="logo">
+    </div>
     <div *ngIf="userService.user.companies.length">
       <div class="row">
-        <button mat-raised-button color="primary" (click)="createContent()">Create content</button>
+        <button class="create-btn" (mouseenter)="displayNav()" (click)="displayNav()"><span class="plus">+</span> Create Content</button>
       </div>
     </div>
-    <div class="row" [class.selected]="url === '/my-account'" routerLink="/my-account">
-      <span class="material-symbols-outlined">
-          home
-      </span>
-      <p>Dashboard</p>
+    <div *ngIf="!userService.user.companies.length">
+      <div class="row">
+        <button class="create-btn" (click)="addCompany()"><span class="plus">+</span> Add Company</button>
+      </div>
     </div>
-    <div class="row"
-         *ngIf="userService.user.companies.length"
-         [class.selected]="url.includes('brand-identity')" routerLink="/my-account/brand-identity">
-      <span class="material-symbols-outlined">
-          Fingerprint
-      </span>
-      <p>Brand Identity</p>
+    <div class="row">
+      <img src="assets/side-nav/recent.svg">
+      <p>Recent Content</p>
     </div>
+    <div class="row">
+      <img src="assets/side-nav/star.svg">
+      <p>Your Content</p>
+    </div>
+    <div class="row">
+      <img src="assets/side-nav/calendar.svg">
+      <p>Content Calendar</p>
+    </div>
+    <div class="line"></div>
+    <div class="row">
+      <img src="assets/side-nav/star.svg">
+      <p>Brand Guide</p>
+    </div>
+    <div class="row">
+      <img src="assets/side-nav/calendar.svg">
+      <p>Brand Information</p>
+    </div>
+    <div class="line"></div>
+    <div class="row">
+      <img src="assets/side-nav/team.svg">
+      <p>Team</p>
+    </div>
+    <div class="row">
+      <img src="assets/side-nav/account.svg">
+      <p>Account</p>
+    </div>
+    <!--    <div class="row"-->
+<!--         *ngIf="userService.user.companies.length"-->
+<!--         [class.selected]="url.includes('brand-identity')" routerLink="/my-account/brand-identity">-->
+<!--      <span class="material-symbols-outlined">-->
+<!--          Fingerprint-->
+<!--      </span>-->
+<!--      <p>Brand Identity</p>-->
+<!--    </div>-->
   </div>
 </div>

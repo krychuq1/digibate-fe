@@ -1,13 +1,27 @@
 @import "../../../assets/styles/colors";
 .my-account{
   display: flex;
-  //border: 1px solid red;
+  background: #f3f4f6;
   .my-account-inner{
     position: relative;
     display: flex;
     flex: 1 0 calc(100% - 340px);
-    //width: 100%;
-    //border: 1px solid blue;
+    .dashboard{
+      .splitter{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        .suggested{
+          width: 50%;
+          margin-right: 12px;
+        }
+        .continue{
+          width: 50%;
+          margin-left: 12px;
+        }
+      }
+    }
   }
   .route-holder{
     width: 100%;
@@ -19,15 +33,32 @@
     }
     display: flex;
     flex-direction: column;
-    padding: 60px 20px 0 20px;
-    background: white;
-    margin-top: 10px;
-    margin-left: 10px;
-    border-radius: 20px;
-    height: 100vh;
+    padding: 40px 40px 0 40px;
+    background: #f3f4f6;
+    //height: 100vh;
     width: 100%;
+    .welcome{
+      display: flex;
+      justify-content: space-between;
+      .gradient-text{
+        /* Fallback: Set a background color. */
+        background-color: #6047B0;
+        /* Create the gradient. */
+        background-image: linear-gradient(to right, #D594EA, #BC82D4, #865EBD, #6047B0);
+        /* Set the background size and repeat properties. */
+        background-size: 100%;
+        background-repeat: repeat;
+        /* Use the text as a mask for the background. */
+        /* This will show the gradient as a text color rather than element bg. */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+      }
+      margin-bottom: 30px;
+    }
     h1{
-      text-align: center;
+      //text-align: center;
       font-weight: bold;
     }
     p{
@@ -42,15 +73,5 @@
       }
     }
   }
-  //justify-content: center;
-  //align-items: center;
-  //flex-direction: column;
-  //padding-top: 60px;
-  //h1{
-  //  text-align: center;
-  //  font-weight: 500;
-  //}
-  //button{
-  //  width: 180px;
-  //}
+
 }

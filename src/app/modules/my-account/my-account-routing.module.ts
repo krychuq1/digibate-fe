@@ -4,7 +4,7 @@ import { MyAccountComponent } from './my-account.component';
 import {BrandIdentityComponent} from "./brand-identity/brand-identity.component";
 
 const routes: Routes = [{ path: '', component: MyAccountComponent,
-  children: [{path: 'brand-identity', component: BrandIdentityComponent}]
+  children: [{path: 'brand-identity', component: BrandIdentityComponent}],
 }];
 
 @NgModule({

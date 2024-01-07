@@ -1,0 +1,27 @@
+@import "./colors";
+@mixin primary-button($width: 286px, $height: 56px, $borderRadius: 29px, $fontSize: 18px, $fontWeight: 500, $lineHeight: 27px, $color: white, $marginBottom: 40px) {
+  border: 0;
+  border-radius: $borderRadius;
+  width: $width;
+  height: $height;
+  background: linear-gradient(to right, #D594EA, #BC82D4, #865EBD, #6047B0);
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  color: $color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $marginBottom;
+  cursor: pointer;
+}
+@mixin secondary-button($bgColor: white, $color: $primary-color, $fontWeight: 600, $width: 110px, $height: 56px, $borderColor: rgba(89, 58, 152, 0.17), $borderRadius: 29px, $marginLeft: 20px) {
+  background: $bgColor;
+  color: $color;
+  font-weight: $fontWeight;
+  width: $width;
+  height: $height;
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius;
+  margin-left: $marginLeft;
+}

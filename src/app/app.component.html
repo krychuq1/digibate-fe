@@ -1,2 +1,15 @@
-<app-header></app-header>
+<!--{{showHeader}}-->
+<div class="first-section" *ngIf="showHeader">
+  <div class="home-holder">
+    <app-header></app-header>
+    <div class="section1">
+      <h1>Meet <span>Digibate</span></h1>
+      <h1>your new marketing assistant</h1>
+      <p>Say goodbye to the hassle of producing costly and time-consuming marketing material. WithDigibate, receive custom-made content straight to your inbox weekly, tailored to your brand'sidentity and tone of voice. Get ready-to-post content delivered weekly and keep youraudience engaged effortlessly.</p>
+    </div>
+    <img src="../assets/first-section/content1.png">
+
+  </div>
+</div>
+
 <router-outlet></router-outlet>

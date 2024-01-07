@@ -22,6 +22,7 @@ import {TextFieldModule} from "@angular/cdk/text-field";
 import {ToastrModule} from "ngx-toastr";
 import { BrandIdentityDialogComponent } from './dialogs/add-company/brand-identity-dialog/brand-identity-dialog.component';
 import {MatStepperModule} from "@angular/material/stepper";
+import { WaitingListComponent } from './components/waiting-list/waiting-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     AddCompanyComponent,
     SuccessComponent,
     BrandIdentityDialogComponent,
+    WaitingListComponent,
   ],
   imports: [
     BrowserModule,

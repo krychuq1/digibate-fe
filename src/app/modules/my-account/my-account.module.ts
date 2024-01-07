@@ -9,13 +9,21 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { RecentContentComponent } from './recent-content/recent-content.component';
+import { SuggestedForYouComponent } from './suggested-for-you/suggested-for-you.component';
+import { ContinueWhereLeftComponent } from './continue-where-left/continue-where-left.component';
+import { CreateNavComponent } from './side-nav/create-nav/create-nav.component';
 
 
 @NgModule({
   declarations: [
     MyAccountComponent,
     SideNavComponent,
-    BrandIdentityComponent
+    BrandIdentityComponent,
+    RecentContentComponent,
+    SuggestedForYouComponent,
+    ContinueWhereLeftComponent,
+    CreateNavComponent
   ],
   imports: [
     CommonModule,

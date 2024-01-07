@@ -1,12 +1,14 @@
 @import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/buttons";
 .side-nav{
   padding: 20px;
-  border-radius: 20px;
-  width: 300px;
-  margin-top: 10px;
-  //border-right: 1px solid $font-color;
-  height: 100vh;
+  width: calc(300px - 40px);
+  height: calc(100% - 40px);
   background-color: white;
+  position: relative;
+  .logo{
+    width: 160px;
+  }
   .company-info{
     span{
       font-size: 10px;
@@ -18,24 +20,35 @@
   }
   .line{
     height: 1px;
-    background-color: $font-color;
-    margin-top: 20px;
+    background-color: $light-gray;
+    margin: 40px 0;
   }
   .inner{
+    .create-btn{
+      @include primary-button(230px, 56px, 29px, 18px, 600, 27px, white, 0);
+      .plus{
+        font-size: 30px;
+        margin-right: 10px;
+      }
+    }
     .row{
       cursor: pointer;
       display: flex;
       align-items: center;
-      margin-top: 30px;
+      padding: 16px 0;
+      //margin-top: 30px;
       &.selected{
         p{
           font-weight: bold;
         }
       }
+      img{
+        margin-right: 12px;
+      }
       p{
         margin: 0;
         line-height: 1;
-
+        font-size: 16px;
       }
       //justify-content: center;
     }

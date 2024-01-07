@@ -11,5 +11,14 @@ $my-typography: mat.define-typography-config(
 
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
-body { margin: 0; background: #e3e2ff; padding: 0 80px;}
+body {
+  margin: 0;
+  background: #e3e2ff;
+  font-family: 'Inter', sans-serif;
+  //padding: 0 80px;
+}
+button{
+  font-family: 'Inter', sans-serif;
+
+}
 

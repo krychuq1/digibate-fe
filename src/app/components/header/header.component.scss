@@ -1,12 +1,39 @@
+@import "../../../assets/styles/buttons";
+@import "../../../assets/styles/colors";
 .header{
-  padding: 20px;
+  height: 80px;
   display: flex;
+  padding: 0 52px;
   justify-content: space-between;
   //max-width: 800px;
-  margin: 20px auto 0 auto;
-  border-radius: 20px;
+  margin: 0px auto 0 auto;
   background: white;
   align-items: center;
+  border-radius: 92px;
+  .primary-btn{
+    @include primary-button(185px, 56px, 29px, 16px, 600, 27px, white, 0);
+    .arrow{
+      font-size: 20px;
+      margin-left: 10px;
+    }
+  }
+  .secondary-btn{
+    @include secondary-button;
+  }
+  .menu{
+    display: flex;
+    .item{
+      margin-right: 40px;
+      font-size: 18px;
+      &:last-child{
+        margin: 0;
+      }
+    }
+  }
+  .action{
+    display: flex;
+
+  }
   .logo{
     img{
       cursor: pointer;

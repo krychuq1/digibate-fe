@@ -2,8 +2,14 @@
   <div class="logo">
     <img src="assets/logo/logo-text.png" alt="logo" [routerLink]="'/'">
   </div>
+  <div class="menu">
+    <div class="item">How it works?</div>
+    <div class="item">Features</div>
+    <div class="item">Blog</div>
+  </div>
   <div class="action" *ngIf="!userService.isLogged">
-    <button mat-raised-button color="primary" (click)="start()">Start free trial</button>
+    <button class="primary-btn" (click)="start()">Start free trial <img src="../../../assets/header/arrow.svg"> </button>
+    <button class="secondary-btn">Contact</button>
   </div>
   <app-user-info *ngIf="userService.isLogged"></app-user-info>
 </div>

@@ -15,7 +15,7 @@ export class SideNavComponent implements OnInit {
   @Input()
   url: string;
   @Output() loadingEmitter = new EventEmitter<boolean>();
-
+  showNav = false;
   constructor(public dialog: MatDialog,
               public contentService: ContentService,
               public userService: UserService,
@@ -40,5 +40,12 @@ export class SideNavComponent implements OnInit {
   }
   ngOnInit(): void {
     // this.addCompany();
+  }
+  displayNav() {
+    this.showNav = true;
+  }
+
+  hideNav() {
+    this.showNav = false;
   }
 }

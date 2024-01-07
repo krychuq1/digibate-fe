@@ -1,8 +1,12 @@
 @import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/buttons";
 .user-info{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.secondary-btn{
+  @include secondary-button;
 }
 p{
   color: $primary-color;

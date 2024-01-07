@@ -35,7 +35,6 @@ export class UserService {
         });
     });
     this.companyService.companySubject.subscribe((next) => {
-      console.log('here company added');
       this.getProfile();
     })
 
@@ -44,19 +43,30 @@ export class UserService {
       this.getProfile();
     }
   }
+  async checkToken(): Promise<boolean> {
+    if(localStorage.getItem('token')) {
+      await this.getProfile();
+    }
+    return this.isLogged;
+  }
   getProfile() {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    };
-    this.http.get(this.server + 'auth/userInfo/', {headers}).subscribe({next: (u: any) => {
-      this.user = u;
-      this.isLogged = true;
-      this.userSubject.next(u);
-      // this.router.navigate(['/my-account'])
-    }, error: e => {
-        this.isLogged = false;
-    }});
+    return new Promise((resolve, reject) => {
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      };
+      this.http.get(this.server + 'auth/userInfo/', {headers}).subscribe({next: (u: any) => {
+          this.user = u;
+          this.isLogged = true;
+          this.userSubject.next(u);
+          resolve(true);
+          // this.router.navigate(['/my-account'])
+        }, error: e => {
+          reject(e);
+          this.isLogged = false;
+        }});
+    });
+
   }
   logout() {
     this.router.navigate(['/'])

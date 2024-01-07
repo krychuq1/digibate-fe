@@ -1,5 +1,6 @@
 <div class="user-info">
   <p [routerLink]="'/my-account'" *ngIf="userService.isLogged">Hello, {{userService.user.profile.name}}</p>
   <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout" class="logout" (click)="logout()"></mat-icon>
+  <button class="secondary-btn">Contact</button>
 </div>
 

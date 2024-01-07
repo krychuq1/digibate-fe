@@ -10,16 +10,23 @@
       <h1>&#x1F4BC; Kickstart Your Business Journey: Add Your Company!</h1>
     </div>
 
-    <div class="inner mat-elevation-z2"  *ngIf="userService.user.companies.length && !loading" >
-      <h1>🚀🌟 Congratulations, you have now finished setting up your account</h1>
-      <p>Please allow up to
-        <span>24 hours</span> before receiving
-        your first content. We will notify you once it is
-        ready.</p>
+    <div class="inner"  *ngIf="userService.user.companies.length && !loading" >
+      <div class="welcome">
+        <h1 class="gradient-text">Hello, {{userService.user.profile.name}}!</h1>
+        <img src="assets/my-account/mail.svg">
+      </div>
+      <div class="dashboard">
+        <app-recent-content></app-recent-content>
+        <div class="splitter">
+          <app-suggested-for-you class="suggested"></app-suggested-for-you>
+          <app-continue-where-left class="continue"></app-continue-where-left>
+        </div>
+      </div>
     </div>
   </div>
   <div class="route-holder">
-    <router-outlet></router-outlet>
+    fdsfd
+<!--    <router-outlet></router-outlet>-->
   </div>
 </div>
 

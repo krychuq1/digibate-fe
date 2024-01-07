@@ -1,0 +1,16 @@
+@import "colors";
+@mixin generic-border($borderRadius: 16px, $borderWidth: 1px, $borderColor: rgba(0, 0, 0, 0.10), $backgroundColor: #FFF) {
+  border-radius: $borderRadius;
+  border: $borderWidth solid $borderColor;
+  background: $backgroundColor;
+}
+@mixin generic-h3($color: $primary-color, $fontSize: 20px, $fontWeight: 500, $marginBottom: 23px) {
+  color: $color;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  margin-bottom: $marginBottom;
+}
+@mixin table-style($backgroundColor: white, $padding: 32px) {
+  background: $backgroundColor;
+  padding: $padding;
+}
